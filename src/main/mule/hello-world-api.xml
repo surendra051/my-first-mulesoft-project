@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="45104477-6bd4-4145-a9f1-6a777edbf1ed" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="hello-world-apiFlow" doc:id="b1f8bdda-0b30-4b45-988f-e2b4ef835c95" >
+		<http:listener doc:name="Listener" doc:id="90e88d9c-a53c-4b4a-a105-a4e9036437ef" config-ref="HTTP_Listener_config" path="/hello"/>
+		<logger level="INFO" doc:name="start flow" doc:id="aada6725-f4af-4f10-a778-dafa2f296dda" message="hai"/>
+		<logger level="INFO" doc:name="processor" doc:id="b2110bc7-ae92-409d-9516-f6f08e08d7ea" message="welcome"/>
+		<logger level="INFO" doc:name="end flow" doc:id="786c8d55-07ea-4231-8e70-d4c0f2fc0580" message="to the world"/>
+		<set-payload value="#[payload]" doc:name="output" doc:id="3545e009-7e75-4399-9daf-1c916aa43fdf" />
+	</flow>
+</mule>
